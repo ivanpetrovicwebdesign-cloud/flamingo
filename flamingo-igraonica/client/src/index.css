@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius: 0.65rem;
+}
+
+:root {
+  --primary: #d95767;
+  --primary-foreground: #fffaf3;
+  --background: #fcfaf7;
+  --foreground: #122744;
+  --card: #fffdf9;
+  --card-foreground: #122744;
+  --popover: #fffdf9;
+  --popover-foreground: #122744;
+  --secondary: #f3ece3;
+  --secondary-foreground: #122744;
+  --muted: #f3ece3;
+  --muted-foreground: #6e7b8d;
+  --accent: #d8d1ed;
+  --accent-foreground: #122744;
+  --border: #dedfdc;
+  --input: #dedfdc;
+  --ring: #d95767;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif; }
+button, a, input, textarea, select { font: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid #d95767; outline-offset: 3px; }
+.font-display { font-family: "DM Serif Display", Georgia, serif; }
+::selection { background: #f7bdad; color: #122744; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; }
+  button:not(:disabled), [role="button"]:not([aria-disabled="true"]), [type="button"]:not(:disabled), [type="submit"]:not(:disabled), a[href], select:not(:disabled) { @apply cursor-pointer; }
+}
+
+@layer components {
+  .container { width: 100%; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+  .flex { min-height: 0; min-width: 0; }
+  .admin-input { width: 100%; border: 1px solid #e2d9d0; border-radius: 0.9rem; background: #fffdf9; padding: 0.75rem 0.85rem; color: #2a1b1a; outline: none; transition: border-color .18s ease, box-shadow .18s ease; }
+  .admin-input:focus { border-color: #d95767; box-shadow: 0 0 0 3px rgba(217, 87, 103, .12); }
+  @media (min-width: 640px) { .container { padding-left: 1.5rem; padding-right: 1.5rem; } }
+  @media (min-width: 1024px) { .container { padding-left: 2rem; padding-right: 2rem; max-width: 1280px; } }
+}
